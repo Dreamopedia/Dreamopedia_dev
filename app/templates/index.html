@@ -1,0 +1,13 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% for message in get_flashed_messages() %}
+ <div class="alert alert-warning">
+ <button type="button" class="close" data-dismiss="alert">&times;</button>
+ {{ message }}
+ </div>
+{% endfor %}
+
+<form method="POST" action="{{url_for('main.search')}}">
+    {{ form.search }}
+    {{ form.search.label }} {{ form.submit }}
+</form>
+

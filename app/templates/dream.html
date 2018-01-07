@@ -1,0 +1,10 @@
+{% import "bootstrap/wtf.html" as wtf %}
+
+<form method="POST" action="{{url_for('main.search')}}">
+    {{ form.search }}
+    {{ form.search.label }} {{ form.submit }}
+</form>
+
+
+{{dream.dream}}<br>
+{{dream.description}}
