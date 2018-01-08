@@ -11,6 +11,6 @@ from wtforms.validators import Required, Length, Email, Regexp, EqualTo
 
 
 class SearchForm(FlaskForm):
-    search = StringField("Type in your dream", validators = [Required()])
+    search = StringField("Type in your dream", validators = [Required(message='Please type in what would you like to find')])
     submit = SubmitField("Submit")
     
