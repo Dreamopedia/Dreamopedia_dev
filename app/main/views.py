@@ -5,7 +5,7 @@ file_dir = os.path.dirname(__file__)
 sys.path.append(file_dir)
 
 from . import main
-from forms import SearchForm
+from forms import SearchForm, AddForm
 from app import db
 from app.models import Dream
 from flask import Flask, request, make_response, redirect, abort, render_template, url_for, flash
@@ -24,8 +24,8 @@ def dream(id):
 @main.route('/search', methods=['GET','POST'])
 def search():
     form=SearchForm()
-    dream=request.form['search']
-    results = Dream.query.whoosh_search(dream).all()
+    name=request.form['search']
+    results = Dream.query.whoosh_search(name).all()
     if len(results)>1:
             return render_template('results.html', results=results,form=form)
     elif len(results)==1:
@@ -34,3 +34,13 @@ def search():
     else:
         flash('No dreams found, sorry :(')
         return redirect(url_for('main.index'))
+
+@main.route('/add', methods=['GET','POST'])
+def add():
+    form = AddForm()
+    if form.validate_on_submit():
+        dream = Dream(name = form.name.data, description = form.description.data)
+        db.session.add(dream)
+        db.session.commit()
+        return redirect(url_for('main.index'))
+    return render_template('add.html', form=form)

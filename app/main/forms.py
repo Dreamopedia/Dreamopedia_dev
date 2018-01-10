@@ -14,3 +14,7 @@ class SearchForm(FlaskForm):
     search = StringField("Type in your dream", validators = [Required(message='Please type in what would you like to find')])
     submit = SubmitField("Submit")
     
+class AddForm(FlaskForm):
+    name = StringField("Add a dream title")
+    description = TextAreaField("Add a dream", validators=[Required()])
+    submit = SubmitField('Send')

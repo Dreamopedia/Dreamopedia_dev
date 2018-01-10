@@ -11,13 +11,13 @@ import flask_whooshalchemy as whooshalchemy
 class Dream(db.Model):
     
     __tablename__ = 'dreams'
-    __searchable__ = ['dream', 'description']
+    __searchable__ = ['name', 'description']
     __analyzer__ = StemmingAnalyzer()
     
     
     id = db.Column(db.Integer, primary_key=True)
-    dream = db.Column(db.String)
+    name = db.Column(db.String)
     description = db.Column(db.String)
     
     def __repr__(self):
-        return '<Dream %r>' %self.dream
+        return '<Dream %r>' %self.name
