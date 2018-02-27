@@ -14,7 +14,6 @@ class Dream(db.Model):
     __searchable__ = ['name', 'description']
     __analyzer__ = StemmingAnalyzer()
     
-    
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     description = db.Column(db.String)

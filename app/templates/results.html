@@ -1,8 +1,10 @@
+{%extends "base.html"%}
 {% import "bootstrap/wtf.html" as wtf %}
 
+{%block page_content%}
 {{wtf.quick_form(form,url_for('main.search'))}}
-
-
+    
     {%for result in results%}
-        <a href='{{url_for('main.dream', id=result.id)}}'>{{result.dream}}<br>
+        <a href='{{url_for('main.dream', id=result.id)}}'>{{result.name}}<br>
     {%endfor%}
+{%endblock%}

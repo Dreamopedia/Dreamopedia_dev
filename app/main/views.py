@@ -10,11 +10,20 @@ from app import db
 from app.models import Dream
 from flask import Flask, request, make_response, redirect, abort, render_template, url_for, flash
 
-@main.route('/')
+@main.route('/', methods=['GET', 'POST'])
 def index():
-    form=SearchForm()
-    return render_template('index.html',form=form)
-
+    form = SearchForm()
+    if form.validate_on_submit():
+        results = Dream.query.whoosh_search(form.search.data).all()
+        if len(results)>1:
+            return redirect(url_for('main.results',dream=form.search.data))
+        elif len(results)==1:
+            id=results[0].id
+            return redirect(url_for('main.dream',id=id))
+        else:
+            return render_template('notfound.html', form=form)
+    return render_template('index.html', form=form)
+    
 @main.route('/dream/<int:id>', methods=['GET','POST'])
 def dream(id):
     form=SearchForm()
@@ -35,6 +44,13 @@ def search():
         flash('No dreams found, sorry :(')
         return redirect(url_for('main.index'))
 
+@main.route('/results/<dream>', methods=['GET', 'POST'])
+def results(dream):
+    form = SearchForm()
+    results = Dream.query.whoosh_search(dream).all()
+    return render_template('results.html', results=results, form=form)
+    
+
 @main.route('/add', methods=['GET','POST'])
 def add():
     form = AddForm()
@@ -44,3 +60,6 @@ def add():
         db.session.commit()
         return redirect(url_for('main.index'))
     return render_template('add.html', form=form)
+
+
+
