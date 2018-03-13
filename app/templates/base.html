@@ -1,57 +1,95 @@
 {% extends "bootstrap/base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 {% block head %}
-    <title>Blog</title>
-    <!-- Required meta tags -->
+<head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <style>
-      body {
-        padding-top: 5rem;
-      }
-    </style>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dreamopedia</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="assets/css/Article-Clean.css">
+    <link rel="stylesheet" href="assets/css/Footer-Basic.css">
+    <link rel="stylesheet" href="assets/css/Footer-Clean.css">
+    <link rel="stylesheet" href="assets/css/Footer-Dark.css">
+    <link rel="stylesheet" href="assets/css/Good-login-dropdown-menu.css">
+    <link rel="stylesheet" href="assets/css/Good-login-dropdown-menu1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
+    <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
 {% endblock %}
-
 
 {% block title %}My App{% endblock %}
 
-{% block navbar %}
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-      <a class="navbar-brand" href="{{url_for('main.index')}}">Dreamopedia</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="{{url_for('main.add')}}">Add a Dream</a>
-          </li>
-
-        </ul>
-      </div>
-    </nav>
-{% endblock %}
-
-{% block content %}
-<div class="container">
- {% for message in get_flashed_messages() %}
- <div class="alert alert-warning">
- <button type="button" class="close" data-dismiss="alert">&times;</button>
- {{ message }}
- </div>
- {% endfor %}
-</div>
-<main role="main" class="container">
-
-</main><!-- /.container -->
-    {% block page_content %}{% endblock %}
-</div>
-{% endblock %}
+<body style="font-family:Abel, sans-serif;">
+    <div class="article-clean">
+        <div class="container col-12" id="container-top">
+		{% block navbar %}
+            <nav class="navbar navbar-light navbar-expand-md d-block navigation-clean" id="nav-main" style="background-color:rgba(29,181,214,0);font-family:Roboto, sans-serif;">
+                <div class="container"><a class="navbar-brand" href="{{url_for('main.index')}}" data-bs-hover-animate="rubberBand" style="color:#ffffff;font-weight:normal;font-style:normal;background-repeat:no-repeat;background-image:url(&quot;assets/img/dreamopedia_logo.png&quot;);background-size:contain;background-position:center;font-size:40px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</a>
+                    <button
+                        class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                        <div class="collapse navbar-collapse" id="navcol-1">
+                            <ul class="nav navbar-nav ml-auto"></ul>
+                            <ul class="nav navbar-nav"></ul>
+                            <ul class="nav navbar-nav">
+                                <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="color:rgb(255,255,255);">Start</a></li>
+                            </ul>
+                        </div>
+                </div>
+            </nav>
+            <div class="row">
+                <div class="col-10 col-sm-11 col-md-11 col-xl-11 col-12 col-xl-12 col-md-12 col-sm-12" style="width:100%;padding-right:0px;padding-left:0px;">
+				<form action="{{ url_for('main.search') }}" method=post>
+				<input class="form-control-lg float-left" name="search" type="search" style="margin-top:10px;margin-bottom:10px;padding-right:16px;margin-left:12%;width:70%;font-family:Roboto, sans-serif;border:none;" placeholder="Search your dream">
+				<button name=submit class="btn btn-primary btn-lg float-left"
+                        type="button" data-bs-hover-animate="pulse" style="margin-top:10px;margin-bottom:10px;padding-bottom:0px;padding-left:0px;padding-right:0px;padding-top:0px;background-color:#03366B;/*box-shadow:0 0 0 .2rem #03366B;*/border-color:white;max-width:46px;max-height:46px;height:90%;width:90%;margin-left:10px;"><i class="fa fa-search"></i></button></div>
+				</form>
+			</div>
+		{% end block %}
+        </div>
+    </div>
+	{% block content %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-xl-2 col-md-2 col-lg-2"></div>
+                <div class="col-md-4 col-xl-8 col-md-4 col-lg-8" style="padding-top:15px;padding-bottom:15px;font-family:Roboto, sans-serif;">
+                    <h1 id="dream-header">Heading</h1>
+                    <p>Paragraph</p>
+					{% block page_content %}{% endblock %}
+                </div>
+                <div class="col-md-4 col-xl-2 col-md-2 col-lg-2"></div>
+            </div>
+        </div>
+	{% end block %}
+    <div class="d-block" id="container-search" style="background-color:rgb(29,181,214);width:100%;"></div>
+    <div class="footer-basic col-12">
+        <footer>
+            <div class="social"></div>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#">Home</a></li>
+                <li class="list-inline-item"><a href="#">Services</a></li>
+                <li class="list-inline-item"><a href="#">About</a></li>
+                <li class="list-inline-item"><a href="#">Terms</a></li>
+                <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+            </ul>
+            <p class="copyright">Dreamopedia © 2018</p>
+        </footer>
+    </div>
+    <div></div>
+    <div></div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-animation.js"></script>
+</body>
 
 {% block scripts %}
 {{ super() }}
