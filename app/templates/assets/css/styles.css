@@ -1,0 +1,27 @@
+@keyframes AnimationName {
+  0% {
+    background-position:0% 50%;
+  }
+  50% {
+    background-position:50% 100%;
+  }
+  100% {
+    background-position:0% 50%;
+  }
+}
+
+#nav-main {
+  /*background:linear-gradient(269deg, #021C38, #2B5784, #3C79B7);*/
+  background-size:200% 200%;
+  animation:AnimationName 30s ease infinite;
+  width:100%;
+  z-index:1;
+}
+
+#container-search {
+  background:linear-gradient(269deg, #021C38, #2B5784, #3C79B7);
+  background-size:200% 200%;
+  animation:AnimationName 30s ease infinite;
+  z-index:1;
+}
+
