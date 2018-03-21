@@ -5,6 +5,7 @@ class Config:
     SECRET_KEY = 'sap chuj'
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     SQLALCHEMY_TRACK_MODIFICATIONS = True
+    XML_DREAMS = os.path.join(basedir, '10,000 Dreams Interpreted.xml')
     
     @staticmethod
     def init_app(app):
