@@ -13,15 +13,15 @@ from flask import Flask, request, make_response, redirect, abort, render_templat
 @main.route('/', methods=['GET', 'POST'])
 def index():
     form = SearchForm()
-    if form.validate_on_submit():
-        results = Dream.query.whoosh_search(form.search.data).all()
-        if len(results)>1:
-            return redirect(url_for('main.results',dream=form.search.data))
-        elif len(results)==1:
-            id=results[0].id
-            return redirect(url_for('main.dream',id=id))
-        else:
-            return render_template('notfound.html', form=form)
+    # if form.validate_on_submit():
+    #     results = Dream.query.whoosh_search(form.search.data).all()
+    #     if len(results)>1:
+    #         return redirect(url_for('main.results',dream=form.search.data))
+    #     elif len(results)==1:
+    #         id=results[0].id
+    #         return redirect(url_for('main.dream',id=id))
+    #     else:
+    #         return render_template('notfound.html', form=form)
     return render_template('index.html', form=form)
     
 @main.route('/dream/<int:id>', methods=['GET','POST'])
@@ -63,7 +63,7 @@ def search():
         return redirect(url_for('main.dream',id=id))
     else:
         flash('No dreams found, sorry :(')
-        return redirect(url_for('main.index'))
+        return render_template('notfound.html', form=form)
 
 @main.route('/results/<dream>', methods=['GET', 'POST'])
 def results(dream):

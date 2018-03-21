@@ -1,8 +1,9 @@
-{% import "bootstrap/wtf.html" as wtf %}
 {% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
 
 {% block page_content %}
 <h1>Dream not found :(</h1>
-{{wtf.quick_form(form,url_for('main.search'))}}
+<!--{{wtf.quick_form(form,url_for('main.search'))}}-->
 {%endblock%}
 

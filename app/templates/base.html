@@ -5,33 +5,33 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dreamopedia</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/fonts/font-awesome.min.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-    <link rel="stylesheet" href="assets/css/Article-Clean.css">
-    <link rel="stylesheet" href="assets/css/Footer-Basic.css">
-    <link rel="stylesheet" href="assets/css/Footer-Clean.css">
-    <link rel="stylesheet" href="assets/css/Footer-Dark.css">
-    <link rel="stylesheet" href="assets/css/Good-login-dropdown-menu.css">
-    <link rel="stylesheet" href="assets/css/Good-login-dropdown-menu1.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/Article-Clean.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/Footer-Basic.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/Footer-Clean.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/Footer-Dark.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/Good-login-dropdown-menu.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/Good-login-dropdown-menu1.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
-    <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/Login-Form-Dark.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/Navigation-Clean.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/styles.css') }}">
+  
 </head>
 {% endblock %}
-
 {% block title %}My App{% endblock %}
-
+{% block body %}
 <body style="font-family:Abel, sans-serif;">
     <div class="article-clean">
         <div class="container col-12" id="container-top">
-		{% block navbar %}
+            {% block navbar %}
             <nav class="navbar navbar-light navbar-expand-md d-block navigation-clean" id="nav-main" style="background-color:rgba(29,181,214,0);font-family:Roboto, sans-serif;">
-                <div class="container"><a class="navbar-brand" href="{{url_for('main.index')}}" data-bs-hover-animate="rubberBand" style="color:#ffffff;font-weight:normal;font-style:normal;background-repeat:no-repeat;background-image:url(&quot;assets/img/dreamopedia_logo.png&quot;);background-size:contain;background-position:center;font-size:40px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</a>
+                <div class="container"><a class="navbar-brand" href="{{url_for('main.index')}}" data-bs-hover-animate="rubberBand" style="color:#ffffff;font-weight:normal;font-style:normal;background-repeat:no-repeat;background-image:url({{ url_for('static', filename='assets/img/dreamopedia_logo.png') }});background-size:contain;background-position:center;font-size:40px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</a>
                     <button
                         class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                         <div class="collapse navbar-collapse" id="navcol-1">
@@ -46,15 +46,15 @@
             <div class="row">
                 <div class="col-10 col-sm-11 col-md-11 col-xl-11 col-12 col-xl-12 col-md-12 col-sm-12" style="width:100%;padding-right:0px;padding-left:0px;">
 				<form action="{{ url_for('main.search') }}" method=post>
-				<input class="form-control-lg float-left" name="search" type="search" style="margin-top:10px;margin-bottom:10px;padding-right:16px;margin-left:12%;width:70%;font-family:Roboto, sans-serif;border:none;" placeholder="Search your dream">
+				<input class="form-control-lg float-left" name="search" type="search" style="margin-top:10px;margin-bottom:10px;padding-right:16px;margin-left:12%;width:70%;font-family:Roboto, sans-serif;border:none;" placeholder="What have you dreamed about">
 				<button name=submit class="btn btn-primary btn-lg float-left"
                         type="button" data-bs-hover-animate="pulse" style="margin-top:10px;margin-bottom:10px;padding-bottom:0px;padding-left:0px;padding-right:0px;padding-top:0px;background-color:#03366B;/*box-shadow:0 0 0 .2rem #03366B;*/border-color:white;max-width:46px;max-height:46px;height:90%;width:90%;margin-left:10px;"><i class="fa fa-search"></i></button></div>
 				</form>
 			</div>
-		{% end block %}
+        {% endblock %}
         </div>
     </div>
-	{% block content %}
+    {% block content %}
         <div class="container">
             <div class="row">
                 <div class="col-md-12"></div>
@@ -62,14 +62,12 @@
             <div class="row">
                 <div class="col-md-4 col-xl-2 col-md-2 col-lg-2"></div>
                 <div class="col-md-4 col-xl-8 col-md-4 col-lg-8" style="padding-top:15px;padding-bottom:15px;font-family:Roboto, sans-serif;">
-                    <h1 id="dream-header">Heading</h1>
-                    <p>Paragraph</p>
-					{% block page_content %}{% endblock %}
+					{% block page_content %} {% endblock %}
                 </div>
                 <div class="col-md-4 col-xl-2 col-md-2 col-lg-2"></div>
             </div>
         </div>
-	{% end block %}
+    {% endblock %}
     <div class="d-block" id="container-search" style="background-color:rgb(29,181,214);width:100%;"></div>
     <div class="footer-basic col-12">
         <footer>
@@ -86,11 +84,11 @@
     </div>
     <div></div>
     <div></div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/bs-animation.js"></script>
+    <script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/bs-animation.js') }}"></script>
 </body>
-
+{%endblock%}
 {% block scripts %}
 {{ super() }}
 {% endblock %}

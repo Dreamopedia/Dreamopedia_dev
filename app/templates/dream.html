@@ -4,9 +4,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm">
-    </div>
-    <div class="col-sm">
-    {{wtf.quick_form(form,url_for('main.search'))}}
+    <!--{{wtf.quick_form(form,url_for('main.search'))}}-->
     <br><br><br><hr>
     {% if link_dream %}
       {{name}}<br>
@@ -14,11 +12,9 @@
       
       <p>See: <a href='{{url_for('main.dream', id=link_dream.id)}}'>{{link_dream.name}}<br></p>
     {%else%}
-      {{dream.name}}<br>
-      {{dream.description}}
+      <h1>{{dream.name}}</h1><br>
+      <p>{{dream.description}}</p>
     {%endif%}
-    </div>
-    <div class="col-sm">
     </div>
   </div>
 </div>
